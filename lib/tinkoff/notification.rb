@@ -26,7 +26,7 @@ module Tinkoff
     end
 
     def failure?
-      !@success
+      !success?
     end
 
     def payment_confirmed?
