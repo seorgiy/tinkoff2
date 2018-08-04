@@ -1,28 +1,43 @@
 module Tinkoff
   class Notification
-    attr_reader :terminal_key, :order_id, :success, :status, :payment_id,
-                :error_code, :amount, :rebill_id, :card_id, :pan, :token
-
     def initialize(params)
-      @terminal_key = params['TerminalKey']
-      @order_id = params['OrderId']
-      @success = params['Success'] == 'true'
-      @status = params['Status']
-      @payment_id = params['PaymentId'].to_i
-      @error_code = params['ErrorCode']
-      @amount = params['Amount'].to_i
-      @rebill_id = params['RebillId'].to_i
-      @card_id = params['CardId'].to_i
-      @pan = params['Pan']
-      @token = params['Token']
+      @data = params.slice('TerminalKey',
+                           'OrderId',
+                           'Success',
+                           'Status',
+                           'PaymentId',
+                           'ErrorCode',
+                           'Amount',
+                           'RebillId',
+                           'CardId',
+                           'Pan',
+                           'Token',
+                           'ExpDate',
+                           'DATA')
+      @token_ok = authentic?
+    end
+
+    def get(key)
+      @data[key]
     end
 
     def success?
-      @success
+      @token_ok && @data['Success'] == 'true'
     end
 
     def failure?
       !@success
+    end
+
+    def payment_confirmed?
+      @token_ok && success? && @data['Status'] == 'CONFIRMED'
+    end
+
+    # true - if token is okay, false - otherwise
+    # https://oplata.tinkoff.ru/landing/develop/notifications/tokens
+    def authentic?
+      values = @data.except('Token').merge({Password: DEFAULT_PARAMS[:Password]}).sort.to_h.values.join
+      get('Token') == Digest::SHA256.hexdigest(values)
     end
   end
 end

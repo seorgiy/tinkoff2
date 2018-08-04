@@ -11,4 +11,9 @@ require 'tinkoff/version'
 
 module Tinkoff
   include ActiveSupport::Configurable
+
+  DEFAULT_PARAMS = {
+    TerminalKey: Tinkoff.config.terminal_key,
+    Password: Tinkoff.config.password
+  }
 end

@@ -1,8 +1,13 @@
 # Tinkoff
 
-This is a Rails 4.2+ fork of https://github.com/dankimio/tinkoff
+Updated fork of https://github.com/dankimio/tinkoff
 
-For new REST V2 API endpoint (https://securepay.tinkoff.ru/v2)
+What's new: 
+1. New REST V2 API endpoint (https://securepay.tinkoff.ru/v2) support
+2. Rails 4+ compatibility
+
+Not all operations implemented fully.
+Please refer to https://oplata.tinkoff.ru/landing/develop/documentation and read the code!
 
 ## Installation
 
@@ -12,9 +17,6 @@ Add this line to your application's Gemfile:
 gem 'tinkoff', :git => 'git@github.com:/aristofun/tinkoff.git'
 ```
 
-Now you can use it in Rails 4.2+ projects.
-
-Everything else is the same as [original gem](https://github.com/dankimio/tinkoff)
 
 ## Usage
 
