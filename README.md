@@ -1,27 +1,20 @@
 # Tinkoff
 
-[![Build Status](https://img.shields.io/travis/dankimio/tinkoff.svg?style=flat)](https://travis-ci.org/dankimio/tinkoff)
-[![Gem Version](https://img.shields.io/gem/v/tinkoff.svg?style=flat&color=brightgreen)](https://rubygems.org/gems/tinkoff)
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://raw.githubusercontent.com/dankimio/tinkoff/master/LICENSE.txt)
+This is a Rails 4.2+ fork of https://github.com/dankimio/tinkoff
 
-
-This is a Ruby wrapper for Tinkoff Acquiring API. The API of this gem is not final and may change significantly before the 1.0 release.
+For new REST V2 API endpoint (https://securepay.tinkoff.ru/v2)
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'tinkoff'
+gem 'tinkoff', :git => 'git@github.com:/aristofun/tinkoff.git'
 ```
 
-And then execute:
+Now you can use it in Rails 4.2+ projects.
 
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install tinkoff
+Everything else is the same as [original gem](https://github.com/dankimio/tinkoff)
 
 ## Usage
 

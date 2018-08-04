@@ -6,12 +6,12 @@ require 'tinkoff/version'
 Gem::Specification.new do |spec|
   spec.name          = 'tinkoff'
   spec.version       = Tinkoff::VERSION
-  spec.authors       = ['Dan Kim']
-  spec.email         = ['itsdanya@gmail.com']
+  spec.authors       = ['Dan Kim + aristofun']
+  spec.email         = ['boatman@list.ru']
 
-  spec.summary       = 'Tinkoff API wrapper.'
+  spec.summary       = 'Tinkoff API wrapper (Rails 4 clone)'
   spec.description   = 'Ruby wrapper for Tinkoff Acquiring API.'
-  spec.homepage      = 'https://github.com/dankimio/tinkoff'
+  spec.homepage      = 'https://github.com/aristofun/tinkoff'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test)/}) }
@@ -24,5 +24,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'minitest', '~> 5.0'
 
   spec.add_runtime_dependency 'httparty', '~> 0.14'
-  spec.add_runtime_dependency 'activesupport', '~> 5.0'
+  spec.add_runtime_dependency 'activesupport', '~> 4.2'
 end
