@@ -36,7 +36,10 @@ Use the client to work with payments.
 # Parameters: amount (in kopecks), order_id, data, options (hash, optional)
 # data — a hash of arbitrary data (up to 20 pairs), "Email" key is required
 # More info: https://oplata.tinkoff.ru/documentation/?section=Init
-Tinkoff::Client.init(100, 1, { Email: 'foo@bar.com' })
+Tinkoff::Client.init(42, 16900, 
+                      CustomerKey: user.id,
+                      DATA: {Email: 'user@example.com'},
+                      Description: description)
 
 # Parameters: payment_id, options (hash, optional)
 Tinkoff::Client.confirm(1)

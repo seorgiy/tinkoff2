@@ -12,7 +12,7 @@ require 'tinkoff/version'
 module Tinkoff
   include ActiveSupport::Configurable
 
-  def tinkoff_params
+  def self.tinkoff_params
     {
       TerminalKey: Tinkoff.config.terminal_key,
       Password: Tinkoff.config.password

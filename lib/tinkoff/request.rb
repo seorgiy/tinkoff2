@@ -27,7 +27,7 @@ module Tinkoff
       # prepare_data
       #
       # Add terminal key and password
-      @params.merge!({TerminalKey: tinkoff_params[:TerminalKey]})
+      @params.merge!({TerminalKey: Tinkoff.tinkoff_params[:TerminalKey]})
       # Sort params by key
       @params = @params.sort.to_h
       # Add token (signature)
@@ -36,7 +36,7 @@ module Tinkoff
 
     # Params signature: https://oplata.tinkoff.ru/landing/develop/documentation/request_sign
     def token
-      values = @params.except(:DATA, :Receipt).merge({Password: tinkoff_params[:Password]}).sort.to_h.values.join
+      values = @params.except(:DATA, :Receipt).merge({Password: Tinkoff.tinkoff_params[:Password]}).sort.to_h.values.join
       Digest::SHA256.hexdigest(values)
     end
 
