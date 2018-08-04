@@ -57,9 +57,13 @@ A notification will be sent to if you provided the URL. You should use it to upd
 
 ```ruby
 notification = Tinkoff::Notification.new(params)
-order = Order.find(notification.order_id)
-order.update_attribute(:paid, true)
+
+if notification.payment_confirmed?
+  order = Order.find(notification.get('OrderId')) 
+  order.update_attribute(:paid, true)
+end
 ```
+
 
 ## Development
 

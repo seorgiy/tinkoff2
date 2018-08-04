@@ -1,8 +1,8 @@
 module Tinkoff
   class Client
     # Инициирует платежную сессию и регистрирует заказ в системе Банка
-    def self.init(amount, order_id, data, params = {})
-      params = params.merge(Amount: amount, OrderId: order_id, DATA: data)
+    def self.init(order_id,amount, params = {})
+      params = params.merge(Amount: amount, OrderId: order_id)
       Tinkoff::Request.new('Init', params).perform
     end
 
