@@ -36,7 +36,8 @@ module Tinkoff
 
     # Params signature: https://oplata.tinkoff.ru/landing/develop/documentation/request_sign
     def token
-      values = @params.except(:DATA, :Receipt).merge({Password: Tinkoff.tinkoff_params[:Password]}).sort.to_h.values.join
+      values = @params.except(:DATA, :Receipt).merge({Password: Tinkoff.tinkoff_params[:Password]})
+                 .stringify_keys.sort.to_h.values.join
       Digest::SHA256.hexdigest(values)
     end
 

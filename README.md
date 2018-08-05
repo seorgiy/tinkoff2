@@ -6,8 +6,7 @@ What's new:
 1. New REST V2 API endpoint (https://securepay.tinkoff.ru/v2) support
 2. Rails 4+ compatibility
 
-Not all operations implemented fully.
-Please refer to https://oplata.tinkoff.ru/landing/develop/documentation and read the code!
+Not all operations implemented fully. Please refer to https://oplata.tinkoff.ru/landing/develop/documentation and read the code!
 
 ## Installation
 
@@ -33,30 +32,31 @@ end
 Use the client to work with payments.
 
 ```ruby
-# Parameters: amount (in kopecks), order_id, data, options (hash, optional)
-# data — a hash of arbitrary data (up to 20 pairs), "Email" key is required
-# More info: https://oplata.tinkoff.ru/documentation/?section=Init
-Tinkoff::Client.init(42, 16900, 
+# Parameters: order_id, amount (in kopecks), options (hash, optional)
+# DATA — a hash of arbitrary data (up to 20 pairs), "Email" key is recommended
+# More info: https://oplata.tinkoff.ru/landing/develop/documentation/Init
+response = Tinkoff::Client.init(order.id, 16900, 
                       CustomerKey: user.id,
                       DATA: {Email: 'user@example.com'},
                       Description: description)
 
 # Parameters: payment_id, options (hash, optional)
-Tinkoff::Client.confirm(1)
+Tinkoff::Client.confirm(response.payment_id) if response.success?
+
+
+# Parameters: payment_id, options (hash, optional)
+Tinkoff::Client.cancel(response.payment_id)
+
+# Parameters: payment_id, options (hash, optional)
+Tinkoff::Client.state(response.payment_id)
 
 # Parameters: payment_id, rebill_id, options (hash, optional)
 Tinkoff::Client.charge(1, 2)
-
-# Parameters: payment_id, options (hash, optional)
-Tinkoff::Client.cancel(1)
-
-# Parameters: payment_id, options (hash, optional)
-Tinkoff::Client.state(1)
 ```
 
-You can view all available options in the [official documentation](https://oplata.tinkoff.ru/documentation/?section=aboutMet).
+You can view all available options in the [official documentation](https://oplata.tinkoff.ru/landing/develop/documentation).
 
-A notification will be sent to if you provided the URL. You should use it to update the status of your payment / order.
+About notification callbacks: https://oplata.tinkoff.ru/landing/develop/notifications
 
 ```ruby
 notification = Tinkoff::Notification.new(params)
@@ -68,13 +68,10 @@ end
 ```
 
 
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment. To install this gem onto your local machine, run `bundle exec rake install`.
-
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/dankimio/tinkoff. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/aristofun/tinkoff  
+This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
