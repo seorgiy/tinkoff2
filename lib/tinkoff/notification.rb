@@ -22,7 +22,7 @@ module Tinkoff
     end
 
     def success?
-      @token_ok && @data['Success'] == 'true'
+      @token_ok && @data['Success'] == true
     end
 
     def failure?
