@@ -13,7 +13,7 @@ Not all operations implemented fully. Please refer to https://oplata.tinkoff.ru/
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'tinkoff', :git => 'git@github.com:/aristofun/tinkoff.git'
+gem 'tinkoff2'
 ```
 
 
