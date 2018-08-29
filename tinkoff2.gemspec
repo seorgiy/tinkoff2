@@ -6,7 +6,7 @@ require 'tinkoff/version'
 Gem::Specification.new do |spec|
   spec.name          = 'tinkoff2'
   spec.version       = Tinkoff::VERSION
-  spec.authors       = ['Dan Kim + aristofun']
+  spec.authors       = ['aristofun (based on Dan Kim old gem)']
   spec.email         = ['boatman@list.ru']
 
   spec.summary       = 'Tinkoff v2 API wrapper (Rails 4 clone)'
