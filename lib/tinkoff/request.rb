@@ -13,7 +13,7 @@ module Tinkoff
       response = HTTParty.post(
         @url,
         body: @params.to_json,
-        # debug_output: $stdout,
+        #debug_output: $stdout,
         :headers => {'Content-Type' => 'application/json'}
       )
 
@@ -36,8 +36,13 @@ module Tinkoff
 
     # Params signature: https://oplata.tinkoff.ru/landing/develop/documentation/request_sign
     def token
-      values = @params.except(:DATA, :Receipt).merge({Password: Tinkoff.tinkoff_params[:Password]})
-                 .stringify_keys.sort.to_h.values.join
+      values = @params.except(:DATA, :Receipt, :Shops)
+                      .merge({Password: Tinkoff.tinkoff_params[:Password]})
+                      .stringify_keys
+                      .sort
+                      .to_h
+                      .values
+                      .join
       Digest::SHA256.hexdigest(values)
     end
 
