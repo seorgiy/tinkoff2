@@ -6,6 +6,12 @@ module Tinkoff
     # Attributes for Cancel method
     attr_reader :original_amount, :new_amount
 
+    # Attributes for AddCard method
+    attr_reader :request_key
+
+    # Attributes for RemoveCard method
+    attr_reader :card_id
+
     def initialize(response)
       @terminal_key = response['TerminalKey']
       @amount = response['Amount']
@@ -21,6 +27,12 @@ module Tinkoff
       # Attributes for Cancel method
       @original_amount = response['OriginalAmount']
       @new_amount = response['NewAmount']
+
+      # Attributes for AddCard method
+      @request_key = response['RequestKey']
+
+      # Attributes for RemoveCard method
+      @card_id = response['CardId']
     end
 
     def failure?
