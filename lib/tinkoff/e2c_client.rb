@@ -41,9 +41,8 @@ module Tinkoff
     end
 
     def self.get_card_list(customer_key, params = {})
-      raise StandardError.new "GetCardList is not implemented"
-      #params = params.merge(CustomerKey: customer_key)
-      #Tinkoff::RequestE2c.new('RemoveCustomer', params).perform
+      params = params.merge(CustomerKey: customer_key)
+      Tinkoff::RequestE2c.new('GetCardList', params).perform
     end
   end
 end

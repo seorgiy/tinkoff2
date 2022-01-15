@@ -7,6 +7,7 @@ module Tinkoff
     BASE_URL = 'https://rest-api-test.tinkoff.ru/e2c/v2/'
 
     def initialize(path, params = {})
+      @path = path
       @url = BASE_URL + path
       @digest_value = ''
       @signature_value = ''
@@ -22,6 +23,9 @@ module Tinkoff
         debug_output: $stdout,
         :headers => {'Content-Type' => 'application/json'}
       )
+
+      return response.parsed_response if @path == 'GetCardList' 
+
       Tinkoff::Payment.new(response.parsed_response)
     end
 
