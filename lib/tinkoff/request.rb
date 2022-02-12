@@ -1,9 +1,8 @@
 module Tinkoff
   class Request
-    BASE_URL = 'https://securepay.tinkoff.ru/v2/'
 
     def initialize(path, params = {})
-      @url = BASE_URL + path
+      @url = Tinkoff.config[:base_url] + path
       @params = params
     end
 

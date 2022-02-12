@@ -3,11 +3,10 @@ require 'base64'
 
 module Tinkoff
   class RequestE2c
-    BASE_URL = 'https://securepay.tinkoff.ru/e2c/v2/'
 
     def initialize(path, params = {})
       @path = path
-      @url = BASE_URL + path
+      @url = Tinkoff.config[:e2c_base_url] + path
       @digest_value = ''
       @signature_value = ''
       @params = params
