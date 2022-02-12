@@ -23,11 +23,4 @@ module Tinkoff
       E2cPrivateKeyPath: Tinkoff.config.e2c_private_key_path
     }
   end
-
-  def self.config
-    {
-      base_url: Tinkoff.config.base_url || 'https://securepay.tinkoff.ru/v2/',
-      e2c_base_url: Tinkoff.config.e2c_base_url || 'https://securepay.tinkoff.ru/e2c/v2/'
-    }
-  end
 end

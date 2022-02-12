@@ -5,8 +5,9 @@ module Tinkoff
   class RequestE2c
 
     def initialize(path, params = {})
+      base_url = Tinkoff.config[:e2c_base_url] || 'https://securepay.tinkoff.ru/e2c/v2/'
       @path = path
-      @url = Tinkoff.config[:e2c_base_url] + path
+      @url = base_url + path
       @digest_value = ''
       @signature_value = ''
       @params = params
