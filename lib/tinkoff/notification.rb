@@ -36,8 +36,13 @@ module Tinkoff
     # true - if token is okay, false - otherwise
     # https://oplata.tinkoff.ru/landing/develop/notifications/tokens
     def authentic?
-      values = @data.except('Token').merge({Password: Tinkoff.tinkoff_params[:Password]})
-                 .stringify_keys.sort.to_h.values.join
+      values = @data.except('Token')
+                    .merge({Password: Tinkoff.tinkoff_params[:Password]})
+                    .stringify_keys
+                    .sort
+                    .to_h
+                    .values
+                    .join
       get('Token') == Digest::SHA256.hexdigest(values)
     end
   end

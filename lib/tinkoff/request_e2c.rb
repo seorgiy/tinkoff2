@@ -3,8 +3,7 @@ require 'base64'
 
 module Tinkoff
   class RequestE2c
-    #BASE_URL = 'https://securepay.tinkoff.ru/e2c/v2/'
-    BASE_URL = 'https://rest-api-test.tinkoff.ru/e2c/v2/'
+    BASE_URL = 'https://securepay.tinkoff.ru/e2c/v2/'
 
     def initialize(path, params = {})
       @path = path
@@ -24,7 +23,7 @@ module Tinkoff
         :headers => {'Content-Type' => 'application/json'}
       )
 
-      return response.parsed_response if @path == 'GetCardList' 
+      return response.parsed_response if @path == 'GetCardList'
 
       Tinkoff::Payment.new(response.parsed_response)
     end
