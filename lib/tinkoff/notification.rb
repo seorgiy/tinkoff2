@@ -13,6 +13,7 @@ module Tinkoff
                            'Pan',
                            'Token',
                            'ExpDate',
+                           'SpAccumulationId',
                            'DATA')
       @token_ok = authentic?
     end
