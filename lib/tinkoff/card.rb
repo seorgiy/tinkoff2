@@ -12,7 +12,7 @@ module Tinkoff
     end
 
     def self.list(array)
-      array.map { |card| new(card) }
+      array.map(&method(:new))
     end
   end
 end
