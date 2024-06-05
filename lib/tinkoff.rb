@@ -8,6 +8,7 @@ require 'tinkoff/client'
 require 'tinkoff/e2c_client'
 require 'tinkoff/payment'
 require 'tinkoff/notification'
+require 'tinkoff/card'
 
 require 'tinkoff/version'
 
