@@ -52,7 +52,7 @@ module Tinkoff
 
     private
 
-    def as_payment(response)
+    def self.as_payment(response)
       Tinkoff::Payment.new(response)
     end
   end
